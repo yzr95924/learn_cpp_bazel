@@ -11,36 +11,39 @@
 
 #include "leetcode_app.h"
 
-static const int kTaskNum = 26;
+#define TOTAL_TASK_TYPE_NUM 26
 
 int leastInterval(char *tasks, int tasksSize, int n)
 {
-    // 维护nextValid数组、剩余执行任务次数数组
-    int restTaskNumArr[kTaskNum];
-    int nextValid[kTaskNum];
-    int totalRestTaskNum = tasksSize;
+    int freqArr[TOTAL_TASK_TYPE_NUM] = {0};
     for (int idx = 0; idx < tasksSize; idx++) {
-        restTaskNumArr[tasks[idx] - 'A'] = 0;
-        nextValid[tasks[idx] - 'A'] = 0;
+        int curIdx = tasks[idx] - 'A';
+        freqArr[curIdx]++;
     }
 
-    for (int idx = 0; idx < tasksSize; idx++) {
-        restTaskNumArr[tasks[idx] - 'A']++;
-        nextValid[tasks[idx] - 'A'] = 1;
+    // 维护nextValid数组、剩余执行任务次数数组，按任务种类重新进行压缩
+    int restTaskNumArr[TOTAL_TASK_TYPE_NUM] = {0};
+    int nextValid[TOTAL_TASK_TYPE_NUM] = {0};
+    int curTaskTypeNum = 0;
+    for (int idx = 0; idx < TOTAL_TASK_TYPE_NUM; idx++) {
+        if (freqArr[idx] > 0) {
+            nextValid[curTaskTypeNum] = 1;
+            restTaskNumArr[curTaskTypeNum] = freqArr[idx];
+            curTaskTypeNum++;
+        }
     }
 
     int time = 0;
+    int totalRestTaskNum = tasksSize;
     while (totalRestTaskNum > 0) {
         time++;
         int runTaskIdx = -1;
         int curMaxTaskCnt = INT_MIN;
-        for (int idx = 0; idx < tasksSize; idx++) {
-            int curTaskIdx = tasks[idx] - 'A';
-            if (nextValid[curTaskIdx] <= time) {
-                if (restTaskNumArr[curTaskIdx] != 0 &&
-                    restTaskNumArr[curTaskIdx] >= curMaxTaskCnt) {
-                    curMaxTaskCnt = restTaskNumArr[curTaskIdx];
-                    runTaskIdx = curTaskIdx;
+        for (int idx = 0; idx < curTaskTypeNum; idx++) {
+            if (nextValid[idx] <= time) {
+                if (restTaskNumArr[idx] != 0 && restTaskNumArr[idx] >= curMaxTaskCnt) {
+                    curMaxTaskCnt = restTaskNumArr[idx];
+                    runTaskIdx = idx;
                 }
             }
         }
