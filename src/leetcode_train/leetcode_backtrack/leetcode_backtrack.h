@@ -14,6 +14,10 @@
 
 #include "common_util.h"
 
+// 22. 括号生成
+// https://leetcode.cn/problems/generate-parentheses/description/
+char **generateParenthesis(int n, int *returnSize);
+
 // 39. 组合总和
 // https://leetcode.cn/problems/combination-sum/description/
 int **combinationSum(int *candidates, int candidatesSize, int target, int *returnSize,
