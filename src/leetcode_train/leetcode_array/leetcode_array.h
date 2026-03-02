@@ -38,6 +38,10 @@ int maxProduct(int *nums, int numsSize);
 // https://leetcode.cn/problems/find-the-duplicate-number/description/
 int findDuplicate(int *nums, int numsSize);
 
+// 581. 最短无序连续子数组
+// https://leetcode.cn/problems/shortest-unsorted-continuous-subarray/description/
+int findUnsortedSubarray(int *nums, int numsSize);
+
 // 704. 二分查找
 // https://leetcode.cn/problems/binary-search/description/
 int search(int *nums, int numsSize, int target);
