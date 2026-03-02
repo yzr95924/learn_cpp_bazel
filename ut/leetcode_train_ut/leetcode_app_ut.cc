@@ -48,3 +48,12 @@ TEST_F(LeetcodeAppTest, 146_LRU_CACHE)
     EXPECT_EQ(ret, 2);
     lRUCacheFree(lruCache);
 }
+
+TEST_F(LeetcodeAppTest, 621_LEAST_INTERVAL)
+{
+    char tasks[] = {'A', 'A', 'A', 'B', 'B', 'B'};
+    int n = 2;
+    int time = 0;
+    time = leastInterval(tasks, sizeof(tasks) / sizeof(char), n);
+    EXPECT_EQ(time, 8);
+}
