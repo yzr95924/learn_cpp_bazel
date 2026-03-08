@@ -30,6 +30,10 @@ int *searchRange(int *nums, int numsSize, int target, int *returnSize);
 // https://leetcode.cn/problems/maximum-subarray/description/
 int maxSubArray(int *nums, int numsSize);
 
+// 75. 颜色分类
+// https://leetcode.cn/problems/sort-colors/description
+void sortColors(int *nums, int numsSize);
+
 // 152. 乘积最大子数组
 // https://leetcode.cn/problems/maximum-product-subarray/description/
 int maxProduct(int *nums, int numsSize);
