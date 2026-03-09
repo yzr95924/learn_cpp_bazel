@@ -57,7 +57,12 @@ struct TreeNode *invertTree(struct TreeNode *root);
 
 // 236. 二叉树的最近公共祖先
 // https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/description/
-struct TreeNode *lowestCommonAncestor(struct TreeNode *root, struct TreeNode *p, struct TreeNode *q);
+namespace p236 {
+class Solution {
+   public:
+    TreeNode *lowestCommonAncestor(TreeNode *root, TreeNode *p, TreeNode *q);
+};
+} // namespace p236
 
 // 617. 合并二叉树
 // https://leetcode.cn/problems/merge-two-binary-trees/description/
